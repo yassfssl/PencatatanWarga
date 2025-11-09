@@ -11,6 +11,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
 
+# Generate .env dulu baru composer
+RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 RUN php artisan key:generate
 RUN php artisan storage:link
