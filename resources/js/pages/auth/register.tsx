@@ -35,8 +35,7 @@ export default function Register() {
                                     tabIndex={1}
                                     autoComplete="name"
                                     name="name"
-                                    placeholder="Full name (minimal 7 karakter)"
-                                    minLength={7}
+                                    placeholder="Full name"
                                 />
                                 <InputError
                                     message={errors.name}
@@ -53,7 +52,7 @@ export default function Register() {
                                     tabIndex={2}
                                     autoComplete="email"
                                     name="email"
-                                    placeholder="email@gmail.com"
+                                    placeholder="email@example.com"
                                 />
                                 <InputError message={errors.email} />
                             </div>
@@ -67,7 +66,7 @@ export default function Register() {
                                     tabIndex={3}
                                     autoComplete="new-password"
                                     name="password"
-                                    placeholder="Password (huruf besar, !, @, atau #)"
+                                    placeholder="Password"
                                 />
                                 <InputError message={errors.password} />
                             </div>
