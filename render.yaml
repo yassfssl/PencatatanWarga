@@ -1,11 +1,11 @@
 services:
   - type: web
-    name: laravel-app
+    name: pencatatan_warga
     env: php
     plan: free
     buildCommand: |
       composer install --no-dev --optimize-autoloader
-      php artisan key:generate
+      php artisan key:generate --force
       php artisan storage:link || true
       npm install
       npm run build
