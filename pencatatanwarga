@@ -1,0 +1,38 @@
+-- Database: pencatatan_warga
+CREATE DATABASE IF NOT EXISTS pencatatan_warga;
+USE pencatatan_warga;
+
+-- Tabel: warga
+CREATE TABLE warga (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nik VARCHAR(16) UNIQUE NOT NULL,
+    nama_lengkap VARCHAR(255) NOT NULL,
+    jenis_kelamin ENUM('Laki-laki', 'Perempuan') NOT NULL,
+    tempat_lahir VARCHAR(100) NOT NULL,
+    tanggal_lahir DATE NOT NULL,
+    agama ENUM('Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu') NOT NULL,
+    pendidikan VARCHAR(50),
+    pekerjaan VARCHAR(100),
+    status_perkawinan ENUM('Belum Menikah', 'Menikah', 'Cerai Hidup', 'Cerai Mati') NOT NULL,
+    alamat TEXT NOT NULL,
+    rt VARCHAR(3) NOT NULL,
+    rw VARCHAR(3) NOT NULL,
+    kelurahan VARCHAR(100) NOT NULL,
+    kecamatan VARCHAR(100) NOT NULL,
+    kota VARCHAR(100) NOT NULL,
+    provinsi VARCHAR(100) NOT NULL,
+    kode_pos VARCHAR(5),
+    no_telepon VARCHAR(15),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Index untuk pencarian
+CREATE INDEX idx_nik ON warga(nik);
+CREATE INDEX idx_nama ON warga(nama_lengkap);
+CREATE INDEX idx_rt_rw ON warga(rt, rw);
+
+-- Sample data
+INSERT INTO warga (nik, nama_lengkap, jenis_kelamin, tempat_lahir, tanggal_lahir, agama, pendidikan, pekerjaan, status_perkawinan, alamat, rt, rw, kelurahan, kecamatan, kota, provinsi, kode_pos, no_telepon) VALUES
+('3201012345670001', 'Budi Santoso', 'Laki-laki', 'Jakarta', '1990-05-15', 'Islam', 'S1', 'Pegawai Swasta', 'Menikah', 'Jl. Merdeka No. 123', '001', '005', 'Kebon Jeruk', 'Kebon Jeruk', 'Jakarta Barat', 'DKI Jakarta', '11530', '081234567890'),
+('3201012345670002', 'Siti Nurhaliza', 'Perempuan', 'Bandung', '1992-08-20', 'Islam', 'D3', 'Wiraswasta', 'Menikah', 'Jl. Sudirman No. 45', '002', '005', 'Kebon Jeruk', 'Kebon Jeruk', 'Jakarta Barat', 'DKI Jakarta', '11530', '081298765432');
